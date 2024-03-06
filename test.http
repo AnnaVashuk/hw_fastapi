@@ -4,6 +4,21 @@
 # Tunder Client не позволяет свободно импортировать-экспортировать записи,
 # поэтому перешел на этот плагин. Он тоже хорош :-)
 
+
+###
+# Создаем продавца
+POST http://localhost:8000/api/v1/sellers/ HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "Anna",
+    "last_name": "Vashukova",
+    "email": "ann_vash@gmail.com",
+    "password": "16748"
+}
+
+
+###
 # Создаем книгу
 POST http://localhost:8000/api/v1/books/ HTTP/1.1
 content-type: application/json
@@ -12,18 +27,33 @@ content-type: application/json
     "title": "Wrong Code",
     "author": "Robert Martin",
     "pages": 104,
-    "year": 2007
+    "year": 2007,
+    "seller_id": 1
 }
 
 ###
+
 
 # Получаем список книг
 GET http://localhost:8000/api/v1/books/ HTTP/1.1
 
 ###
 
+# Получаем список продавцов
+GET http://localhost:8000/api/v1/sellers/ HTTP/1.1
+
+###
+
+
 # Получаем одну книгу по ее ИД
 GET http://localhost:8000/api/v1/books/1 HTTP/1.1
+
+###
+
+
+###
+# Получаем одного продавца по его ИД и список проданных им книг
+GET http://localhost:8000/api/v1/sellers/1 HTTP/1.1
 
 ###
 
@@ -38,9 +68,25 @@ content-type: application/json
     "year": 2007,
     "id": 0
 }
+###
+
+
+# Обновляем поля о продавце по его ИД
+PUT http://localhost:8000/api/v1/sellers/1 HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "Den",
+    "last_name": "Andreev",
+    "email": "dandreev@gmail.com",
+    "password": "00000",
+    "id": 1
+}
+
 
 ###
 
+###
 # Удаляем книгу
 DELETE http://localhost:8000/api/v1/books/1 HTTP/1.1
 content-type: application/json

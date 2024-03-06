@@ -6,6 +6,8 @@ from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker
 from src.models.base import BaseModel
 from src.models.books import Book  # noqa F401
 
+from scr.models.seller import Seller
+
 from .settings import settings
 
 logger = logging.getLogger("__name__")
